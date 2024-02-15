@@ -5,7 +5,8 @@
 
   "TrustedClientIPs": [
     "[::1]",
-    "localhost"
+    "localhost",
+    "127.0.0.1"
   ],
 
   "GameFPS": 24,
