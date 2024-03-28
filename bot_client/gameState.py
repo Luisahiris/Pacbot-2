@@ -175,7 +175,7 @@ class Location:
 
 		# Return the matching direction, if applicable
 		for direction in Directions:
-			if self.row == D_ROW[direction] and self.col == D_COL[direction]:
+			if self.row == D_ROW[direction] and self.col == D_COL[direction]: #***********
 				return direction
 
 		# Return none if no direction matches
@@ -292,11 +292,12 @@ class Ghost:
 			# Pink targets the space 4 ahead of Pacman
 			elif self.color == GhostColors.PINK:
 				targetRow = pacmanRow + 4 * pacmanRowDir
-				targetRow = pacmanCol + 4 * pacmanColDir
+				targetCol = pacmanCol + 4 * pacmanColDir
 
 			# Cyan targets the position of red, reflected about the position 2 spaces
 			# ahead of Pacman
-			elif self.color == GhostColors.CYAN:
+			# internet: in scatter mode will head to the low right corner
+			elif self.color == GhostColors.CYAN: # ******
 				targetRow = 2 * pacmanRow + 4 * pacmanRowDir - redRow
 				targetCol = 2 * pacmanCol + 4 * pacmanColDir - redCol
 
@@ -605,7 +606,8 @@ class GameState:
 		'''
 		Helper function to check if a pellet is at a given location
 		'''
-
+		print('pellet at def')
+		print(self.pelletArr)
 		return bool((self.pelletArr[row] >> col) & 1)
 
 	def superPelletAt(self, row: int, col: int) -> bool:
